@@ -13,17 +13,14 @@ use App\Cuenta_bancaria;
 |
 */
 /*
-Route::get('/login2', function () {
-    return view('logins.login2');
-});*/
-
-Route::get('/login2', 'LoginController@logeo');
-
+Route::get('/', function () {
+    return view('logins.login');
+});
+Route::get('/login', 'LoginController@verificarLogin')->name('login');
+*/
 Route::get('/admin', function(){
     return view('layout.content');
 });
-
-//Route::view('/', 'home')->name('home');
 
 Route::resource('bancos', 'BancoController');
 
@@ -37,6 +34,7 @@ Route::resource('tipo_empleados', 'Tipo_empleadoController');
 
 Route::resource('empleados', 'EmpleadoController');
 Route::get('/domestik', 'EmpleadoController@getDomestik');
+Route::get('usuarios', 'Auth\LoginController@index');
 
 Route::resource('clientes', 'ClienteController');
 
@@ -48,12 +46,8 @@ Route::get('/actualizar, BancoController@update');
 Route::get('/borrar, BancoController@destroy');
 */
 
+
+
 Auth::routes();
-/*Crea las siguientes rutas:
---- LoginController ---
-GET  /login
-POST /login
-POST /logout
---- RegisterController ---
-GET  /register
-POST /register
+
+Route::get('/', 'HomeController@index')->name('home');

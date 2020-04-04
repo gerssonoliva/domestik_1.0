@@ -1,4 +1,4 @@
-@extends('../layout.plantilla')
+@extends('../layouts.app')
 
 @section('content')
     <h1>Registrar Banco</h1>
