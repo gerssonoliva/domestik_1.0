@@ -14,16 +14,16 @@ use App\Cuenta_bancaria;
 */
 /*
 Route::get('/login2', function () {
-    return view('auth.login2');
+    return view('logins.login2');
 });*/
 
-Route::get('/login2', 'LoginController@verificarLogin');
-/*
-Route::get('/', function(){
+Route::get('/login2', 'LoginController@logeo');
+
+Route::get('/admin', function(){
     return view('layout.content');
-});*/
+});
 
-Route::view('/', 'home')->name('home');
+//Route::view('/', 'home')->name('home');
 
 Route::resource('bancos', 'BancoController');
 

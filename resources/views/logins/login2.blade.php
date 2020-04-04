@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Domestik | Login</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Domestik | Login</title>
+  
   <link rel="shortcut icon" href="{{ asset('adminlte/dist/img/icono.ico')}}" type="image/x-icon">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
@@ -24,15 +26,13 @@
   </div>
 
   <div class="card">
+    
     <div class="card-body login-card-body">
       <h3><p class="login-box-msg"><b>Inicio Sesión</b></p></h3>
-      
-      <!--<form method="post" action="/login2">-->
-      {{ Form::open(array('url' => '/login2', 'method' => 'POST')) }}
-      @csrf
+      {!! Form::open(['url' => 'LoginController@verificarLogin ', 'method' => 'POST']) !!}
         <div class="input-group mb-3">
-          <!--<input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario">-->
-          {{ Form::text('usuario', ['class' => 'form-control']) }}
+        <input type="text" name="usuario" class="form-control" placeholder="Usuario">
+          {{csrf_field()}}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -40,8 +40,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <!--<input type="password" name="contra" id="contra" class="form-control"  placeholder="Contraseña">-->
-          {{ Form::password('contra', ['class' => 'form-control']) }}
+        <input type="password" name="contra" class="form-control" placeholder="Contraseña">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -57,23 +56,18 @@
               </label>
             </div>
           </div>
-
-          <div class="col-4">
+          <di class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
           </div>
-
         </div>
-      {{ Form::close() }}
-      <!--</form>-->
-
       <p class="mb-1">
         <a href="forgot-password.html">Olvidé mi contraseña</a>
       </p>
       <p class="mb-0">
         <a href="register.html" class="text-center">Nuevo registro</a>
       </p>
+      {!! Form::close() !!}
     </div>
-
   </div>
 </div>
 

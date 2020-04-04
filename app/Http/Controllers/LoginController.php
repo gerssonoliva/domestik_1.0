@@ -84,31 +84,32 @@ class LoginController extends Controller
         //
     }
 
+    public function logeo()
+    {
+        return view('logins.login2');
+    }
 
     public function verificarLogin(Request $request){
-        $usuario = $request->usuario;
-        $contra = $request->contra;
-        if ($usuario==null || $contra==null) {
-            $logins = Login::select('logins')
-                    ->where('logins.usuario', '=', $request->usuario)
-                    ->get();
+        $usuario = htmlspecialchars($request->usuario);
+        //$usuario = 'admin';
+        $contra = htmlspecialchars($request->contra);
+        //$contra = '123456';
+        $logins = Login::where('usuario',$usuario)
+                ->get();
             if (count($logins)!=0) {
                 $login = $logins->first();//Coge el primer registro y sobre ese se hace las comparaciones
                 if ($login->estado=='A') {
                     if ($login->usuario==$usuario && $login->contra==$contra) {
-                        return view('/');
+                        return redirect('/admin');
                     }else{
-                        echo 'Usuario o Contraseña incorrecta';
+                        return 'Usuario o Contraseña incorrecta';
                     }
                 }else{
-                    echo 'Usuario inhabilitado';
+                    return 'Usuario inhabilitado';
                 }
             }else{
-                echo 'Usuario no encontrado';
+                return 'Usuario no encontrado';
             }
-        }else{
-            echo 'Usuario o Contraseña vacío';
-        }
     }
 
 }
