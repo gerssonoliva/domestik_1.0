@@ -30,16 +30,20 @@ $cboPerfil = Tipo_empleado::pluck('nombre', 'id');
             <td>{!!Form::date('fecha_nac');!!}</td>
         </tr>
         <tr>
-            <td>{!!Form::label('correo', 'Correo:')!!}</td>
+            <td>{!!Form::label('correo', 'Correo Personal:')!!}</td>
             <td>{!!Form::email('correo');!!}</td>
         </tr>
         <tr>
-            <td>{!!Form::label('usuario', 'Usuario:')!!}</td>
-            <td>{!!Form::text('usuario');!!}</td>
+            <td>{!!Form::label('name', 'Usuario Domestik:')!!}</td>
+            <td>{!!Form::text('name');!!}</td>
         </tr>
         <tr>
-            <td>{!!Form::label('contra', 'Contraseña:')!!}</td>
-            <td>{!!Form::password('contra');!!}</td>
+            <td>{!!Form::label('email', 'Correo Domestik:')!!}</td>
+            <td>{!!Form::email('email');!!}</td>
+        </tr>
+        <tr>
+            <td>{!!Form::label('password', 'Contraseña:')!!}</td>
+            <td>{!!Form::password('password');!!}</td>
         </tr>
         <tr>
             <td>{!!Form::label('tipo_empleados_id', 'Perfil:')!!}</td>

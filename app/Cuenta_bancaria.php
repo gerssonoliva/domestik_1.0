@@ -12,6 +12,7 @@ class Cuenta_bancaria extends Model
     protected $table = "cuenta_bancarias";
     use SoftDeletes;
     protected $fillable = ["bancos_id",
+                            "cci",
                             "nro_cuenta"];
 
     public function Banco()

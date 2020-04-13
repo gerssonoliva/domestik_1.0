@@ -36,6 +36,11 @@
                 </th>
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
                     <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">N° de CCI</font>
+                    </font>
+                </th>
+                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
+                    <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Banco</font>
                     </font>
                 </th>
@@ -52,6 +57,11 @@
                 <td tabindex="0" class="">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">{{$cuenta->nro_cuenta}}</font>
+                    </font>
+                </td>
+                <td tabindex="0" class="">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">{{$cuenta->cci}}</font>
                     </font>
                 </td>
                 <td tabindex="0" class="">

@@ -261,7 +261,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="usuarios" class="nav-link">
+                    <a href="users" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Usuarios</p>
                     </a>

@@ -34,10 +34,10 @@ Route::resource('tipo_empleados', 'Tipo_empleadoController');
 
 Route::resource('empleados', 'EmpleadoController');
 Route::get('/domestik', 'EmpleadoController@getDomestik');
-Route::get('usuarios', 'Auth\LoginController@index');
 
 Route::resource('clientes', 'ClienteController');
 
+Route::resource('users', 'UserController');
 
 /*
 Route::get('/crear, BancoController@create');
@@ -45,8 +45,6 @@ Route::get('/insertar, BancoController@store');
 Route::get('/actualizar, BancoController@update');
 Route::get('/borrar, BancoController@destroy');
 */
-
-
 
 Auth::routes();
 

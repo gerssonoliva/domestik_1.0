@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cuenta_bancaria;
-use App\Http\Requests\Create_Cuentas_bancarias_Request;
+use App\User;
 
-class Cuenta_bancariaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,8 @@ class Cuenta_bancariaController extends Controller
      */
     public function index()
     {
-        $cuentas = Cuenta_bancaria::select('cuenta_bancarias')
-                    ->join('bancos', 'bancos.id', '=', 'cuenta_bancarias.bancos_id')
-                    ->select('cuenta_bancarias.*', 'bancos.nombre')
-                    ->get();
-        return view('cuentas.index', compact('cuentas'));
+        $users = User::all();
+        return view("users.index", compact("users"));
     }
 
     /**
@@ -29,7 +25,7 @@ class Cuenta_bancariaController extends Controller
      */
     public function create()
     {
-        return view('cuentas.create');
+        //
     }
 
     /**
@@ -38,14 +34,9 @@ class Cuenta_bancariaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Create_Cuentas_bancarias_Request $request)//Cambiar el Request por el  nombre de la clase para validacion
+    public function store(Request $request)
     {
-        $cuentas = new Cuenta_bancaria;
-        $cuentas->nro_cuenta = $request->nro_cuenta;
-        $cuentas->cci = $request->cci;
-        $cuentas->bancos_id = $request->bancos_id;
-        $cuentas->save();
-        return redirect('/cuentas');
+        //
     }
 
     /**
@@ -67,8 +58,7 @@ class Cuenta_bancariaController extends Controller
      */
     public function edit($id)
     {
-        $cuentas = Cuenta_bancaria::findOrFail($id);
-        return view('cuentas.edit', compact('cuentas'));
+        //
     }
 
     /**
@@ -80,9 +70,7 @@ class Cuenta_bancariaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cuentas = Cuenta_bancaria::findOrFail($id);
-        $cuentas->update($request->all());
-        return redirect('/cuentas');
+        //
     }
 
     /**
@@ -93,8 +81,6 @@ class Cuenta_bancariaController extends Controller
      */
     public function destroy($id)
     {
-        $cuentas = Cuenta_bancaria::find($id);
-        $cuentas->delete();
-        return redirect('/cuentas');
+        //
     }
 }

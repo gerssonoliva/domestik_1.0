@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Banco;
+use App\Http\Requests\Create_Bancos_Request;//Agregado para usar el método de validación
 
 class BancoController extends Controller
 {
@@ -35,8 +36,11 @@ class BancoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Create_Bancos_Request $request)
     {
+        /*$this->validate($request, [
+            REVISAR LA CARPETA Request
+        ]);*/
         $bancos = new Banco;
         $bancos->nombre = $request->nombre;
         $bancos->save(); 

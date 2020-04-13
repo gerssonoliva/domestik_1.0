@@ -14,10 +14,10 @@
       </div>
     </form>
     <br>
-    <button type="button" class="btn btn-success" onclick="location.href='{{route('empleados.create')}}'">
+    <button type="button" class="btn btn-success" onclick="location.href='{{route('users.create')}}'">
         <font style="vertical-align: float;">
             <i class="nav-icon fas fa-plus"></i>
-            <font style="vertical-align: inherit;">Nuevo Empleado</font>
+            <font style="vertical-align: inherit;">Nuevo Usuario</font>
         </font>
     </button>
     <hr>
@@ -31,17 +31,12 @@
             <tr role="row">
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">ID</font>
+                        <font style="vertical-align: inherit;">Correo</font>
                     </font>
                 </th>
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Nombre</font>
-                    </font>
-                </th>
-                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
-                    <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Email</font>
+                        <font style="vertical-align: inherit;">Usuario</font>
                     </font>
                 </th>
                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="2">
@@ -56,7 +51,7 @@
             <tr role="row" class="old">
                 <td tabindex="0" class="">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{$user->id}}</font>
+                        <font style="vertical-align: inherit;">{{$user->email}}</font>
                     </font>
                 </td>
                 <td tabindex="0" class="">
@@ -65,12 +60,7 @@
                     </font>
                 </td>
                 <td tabindex="0" class="">
-                    <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{$user->email}}</font>
-                    </font>
-                </td>
-                <td tabindex="0" class="">
-                    <button type="button" class="btn btn-warning btn-xs" onclick="location.href='{{route('empleados.edit', $empleado->id)}}'">
+                    <button type="button" class="btn btn-warning btn-xs" onclick="location.href='{{route('users.edit', $user->id)}}'">
                         <font style="vertical-align: inherit;">
                             <i class="nav-icon fas fa-edit"></i>
                             <font style="vertical-align: inherit;">Editar</font>
@@ -78,7 +68,7 @@
                     </button>
                 </td>
                 <td tabindex="0" class="">
-                {!! Form::open(['method'=>'DELETE', 'action' => ['EmpleadoController@destroy', $empleado->id]]) !!}
+                {!! Form::open(['method'=>'DELETE', 'action' => ['UserController@destroy', $user->id]]) !!}
                     <button type="submit" class="btn btn-danger btn-xs">
                         <font style="vertical-align: inherit;">
                             <i class="nav-icon fas fa-x"></i>

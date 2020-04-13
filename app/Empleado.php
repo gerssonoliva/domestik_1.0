@@ -17,14 +17,16 @@ class Empleado extends Model
                             "fecha_nac",
                             "correo",
                             "tipo_empleados_id",
-                            "logins_id"];
+                            "estado",
+                            "users_id"];
     public function Tipo_empleado()
     {
         return $this->belongsTo('App\Tipo_empleado');
     }
     
-    public function Login()
+    public function User()
     {
-        return $this->belongsTo('App\Login');
+        return $this->belongsTo('App\User');
     }
+
 }

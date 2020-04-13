@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
-use App\Login;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class EmpleadoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,11 +19,10 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //$empleados = Empleado::all();
         $empleados = Empleado::select('empleados')
-                    ->join('logins', 'logins.id', '=', 'empleados.logins_id')
+                    ->join('users', 'users.id', '=', 'empleados.users_id')
                     ->join('tipo_empleados', 'tipo_empleados.id', '=', 'empleados.tipo_empleados_id')
-                    ->select('empleados.*', 'logins.usuario', 'logins.contra', 'tipo_empleados.nombre', 'logins.estado')
+                    ->select('empleados.*', 'users.email', 'users.name', 'tipo_empleados.nombre')
                     ->get();
         return view("empleados.index", compact("empleados"));
     }
@@ -34,6 +37,8 @@ class EmpleadoController extends Controller
         return view("empleados.create");
     }
 
+    use RegistersUsers;
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -41,13 +46,13 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $logins = new Login;
-        $logins->usuario = $request->usuario; 
-        $logins->contra = $request->contra; 
-        $logins->foto = $request->foto; 
-        $logins->estado = "A"; // A = Activo | I = Inactivo
-        $logins->save();
+    {   
+        $users = new User;
+        $users->email = $request['email']; 
+        $users->password = Hash::make($request['password']); 
+        $users->name = $request['name']; 
+        $users->save();
+        //-----------------------------------
         $empleados = new Empleado;
         $empleados->e_nombre = $request->e_nombre;
         $empleados->apellido = $request->apellido;
@@ -56,7 +61,8 @@ class EmpleadoController extends Controller
         $empleados->fecha_nac = $request->fecha_nac;
         $empleados->correo = $request->correo;
         $empleados->tipo_empleados_id = $request->tipo_empleados_id;
-        $empleados->logins_id = $logins->id;
+        $empleados->users_id = $users->id;
+        $empleados->estado = "A"; // A = Activo | I = Inactivo
         $empleados->save();
         return redirect("/empleados");
     }
@@ -113,9 +119,9 @@ class EmpleadoController extends Controller
 
     public function getDomestik(){
         $empleados = Empleado::select('empleados')
-                    ->join('logins', 'logins.id', '=', 'empleados.logins_id')
-                    ->select('empleados.*', 'logins.usuario', 'logins.contra', 'logins.estado')
-                    ->where('empleados.tipo_empleados_id', '=', 3)
+                    ->join('users', 'users.id', '=', 'empleados.users_id')
+                    ->select('empleados.*', 'users.email', 'users.name')
+                    ->where('empleados.tipo_empleados_id', '=', 5)
                     ->get();
         return view("empleados.domestik", compact("empleados"));
     }

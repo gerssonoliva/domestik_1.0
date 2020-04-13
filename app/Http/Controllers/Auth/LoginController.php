@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\User;
 
 class LoginController extends Controller
 {
@@ -20,12 +19,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    public function index(){
-        $users = User::all();
-        //return view('usuarios', compact('cuentas'));
-        return view('usuarios', ['users'=>$users]);
-    }
 
     /**
      * Where to redirect users after login.

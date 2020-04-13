@@ -25,10 +25,10 @@ class CreateEmpleadosTable extends Migration
             $table->foreign('tipo_empleados_id')
                     ->references('id')->on('tipo_empleados')
                     ->onDelete('cascade');
-            $table->unsignedBigInteger('logins_id');
+            /*$table->unsignedBigInteger('logins_id');
             $table->foreign('logins_id')
                     ->references('id')->on('logins')
-                    ->onDelete('cascade');
+                    ->onDelete('cascade');-- CAMBIADO POR TABLA USER --*/
             $table->timestamps();
         });
     }

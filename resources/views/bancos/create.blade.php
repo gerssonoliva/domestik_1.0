@@ -10,6 +10,16 @@
             <td>{!!Form::text('nombre');!!}</td>
         </tr>
         {{csrf_field()}}
+        <tr>
+            <td></td>
+            <td>
+                @if(count($errors) > 0)
+                    @foreach($errors->all() as $error)
+                        {{$error}}
+                    @endforeach
+                @endif
+            </td>
+        </tr>
         <br>
         <tr>
             <td colspan="2" align="center">{!!Form::submit('Guardar')!!}</td>
