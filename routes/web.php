@@ -12,14 +12,13 @@ use App\Cuenta_bancaria;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('logins.login');
-});
-Route::get('/login', 'LoginController@verificarLogin')->name('login');
-*/
+
 Route::get('/admin', function(){
     return view('layout.content');
+});
+
+Route::get('/web', function(){
+    return view('websites.index');
 });
 
 Route::resource('bancos', 'BancoController');

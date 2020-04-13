@@ -19,12 +19,24 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    /*.login-page {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(adminlte/dist/img/fondo_login_1.png) fixed center center;
+        background-size: cover;
+        padding: 80px 0;
+    }*/
+    .login-page {
+        background: url(adminlte/dist/img/fondo_login_1.png) top center fixed;
+        background-size: cover;
+    }
+  </style>
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <h2><b>Sistema Domestik</b></h2>
+            <!--<h1><b>Sistema Domestik</b></h1>-->
+            <img class="" src="{{asset('adminlte/dist/img/logo1.png')}}" alt="">
         </div>
         <div class="card">
             <div class="card-body login-card-body">
