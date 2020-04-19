@@ -18,8 +18,8 @@ class Cliente extends Model
                             "correo",
                             "logins_id"];
     
-    public function Login()
+    public function User()
     {
-        return $this->belongsTo('App\Login');
+        return $this->belongsTo('App\User');
     }
 }

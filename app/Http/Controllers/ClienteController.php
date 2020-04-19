@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
-use App\Login;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class ClienteController extends Controller
 {
@@ -15,10 +17,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //$clientes = Cliente::all();
         $clientes = Cliente::select('clientes')
-                    ->join('logins', 'logins.id', '=', 'clientes.logins_id')
-                    ->select('clientes.*', 'logins.usuario', 'logins.contra', 'logins.estado')
+                    ->join('users', 'users.id', '=', 'clientes.users_id')
+                    ->select('clientes.*', 'users.email', 'users.name')
                     ->get();
         return view("clientes.index", compact("clientes"));
     }
@@ -33,6 +34,7 @@ class ClienteController extends Controller
         return view("clientes.create");
     }
 
+    use RegistersUsers;
     /**
      * Store a newly created resource in storage.
      *
@@ -41,12 +43,13 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $logins = new Login;
-        $logins->usuario = $request->usuario;
-        $logins->contra = $request->contra;
-        $logins->foto = $request->foto; 
-        $logins->estado = "A"; // A = Activo | I = Inactivo
-        $logins->save();
+        
+        $users = new User;
+        $users->email = $request['email']; 
+        $users->password = Hash::make($request['password']); 
+        $users->name = $request['nombre']; 
+        $users->save();
+        //-----------------------------------
         $clientes = new Cliente;
         $clientes->nombre = $request->nombre;
         $clientes->apellido = $request->apellido;
@@ -54,9 +57,10 @@ class ClienteController extends Controller
         $clientes->telefono = $request->telefono;
         $clientes->fecha_nac = $request->fecha_nac;
         $clientes->correo = $request->correo;
-        $clientes->logins_id = $logins->id;
+        $clientes->users_id = $users->id;
+        $clientes->estado = "A"; // A = Activo | I = Inactivo
         $clientes->save();
-        return redirect("/clientes");
+        return redirect("/login");
     }
 
     /**

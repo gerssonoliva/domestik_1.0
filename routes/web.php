@@ -38,6 +38,10 @@ Route::resource('clientes', 'ClienteController');
 
 Route::resource('users', 'UserController');
 
+Route::get('registro', function(){
+    return view('clientes.create');
+});
+
 /*
 Route::get('/crear, BancoController@create');
 Route::get('/insertar, BancoController@store');

@@ -81,10 +81,29 @@
           <li><a href="#about">Acerca de nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
           <li><a href="#portfolio">Galería</a></li>
-          <!--<li><a href="#testimonials">Comentarios</a></li>-->
           <li><a href="#team">Equipo Domestik</a></li>
           <li><a href="#contact">Contáctanos</a></li>
-          <li><a href="#register">Iniciar Sesión</a></li>
+          <li><div class="sidebar">
+              <!-- Sidebar user panel (optional) -->
+              <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="info">
+                  <a href="#" class="d-block">
+                    @guest
+                      <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a><strong>
+                        @else
+                          {{ Auth::user()->name }}
+                      </strong>
+                      <a class="dropdown-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                        Cerrar Sesión
+                      </a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
+                    @endguest
+                  </a>
+              </div>
+          </div></li>
         </ul>
       </nav>
       <!-- #Contenedor del menú de navegación -->

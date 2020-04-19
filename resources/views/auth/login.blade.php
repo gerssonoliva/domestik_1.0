@@ -82,6 +82,13 @@
                                 <button type="submit" class="btn btn-primary btn-block">
                                     {{ __('Ingresar') }}
                                 </button>
+                                <!--AGREGADO PARA CLIENTES (18/04/20)-->
+                                <div class="col-md-12 offset-md-2">
+                                    <a class="btn btn-link" href="registro">
+                                        {{ __('Registrarse') }}
+                                    </a>
+                                </div>
+                                <!---->
                                 @if (Route::has('password.request'))
                                 <div class="col-md-12 offset-md-2">
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

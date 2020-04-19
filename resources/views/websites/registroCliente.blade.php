@@ -9,8 +9,8 @@
   <div class="card">
     <div class="card-body register-card-body">
       <p class="login-box-msg">Registro nuevo cliente Domestik</p>
-      {!! Form::open(['url' => '/clientes', 'method'=>'post']) !!}
-      <!--<form action="/clientes" method="post">-->
+
+      <form action="/clientes" method="post">
         <div class="input-group mb-3">
           <input type="text" name="nombre" class="form-control" placeholder="Nombre">
           <div class="input-group-append">
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Usuario Domestik">
+          <input type="email" class="form-control" placeholder="Usuario Domestik">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -68,14 +68,21 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Contraseña">
+          <input type="password" class="form-control" placeholder="Contraseña">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
-        
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Repita contraseña">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
@@ -91,8 +98,8 @@
           </div>
           <!-- /.col -->
         </div>
-      <!--</form>-->
-      {!! Form::close() !!}
+      </form>
+
       <div class="social-auth-links text-center">
         <p>- O -</p>
         <a href="#" class="btn btn-block btn-primary">
