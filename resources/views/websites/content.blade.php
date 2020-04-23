@@ -63,19 +63,11 @@
     <div class="container">
       <div id="logo" class="pull-left">
         <a href="#hero"><img src="{{asset('webSite/img/logo1.png')}}" alt="" title="" /></img></a>
-        <!-- Descomenta abajo si prefieres usar una imagen de texto -->
-        <!--<h1><a href="#hero">Encabezado 1</a></h1>-->
       </div>
       <!--Contenedor del menú de navegación-->
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="web">Inicio</a></li>
-          <!--<li><a href="#about">Acerca de nosotros</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#portfolio">Galería</a></li>
-          <li><a href="#testimonials">Comentarios</a></li>
-          <li><a href="#team">Equipo Domestik</a></li>
-          <li><a href="#contact">Contáctanos</a></li>-->
         </ul>
       </nav>
       <!-- #Contenedor del menú de navegación -->
@@ -83,10 +75,10 @@
   </header>
   <!-- #Sección encabezado -->
 
-  <div class="container wow fadeInUp login-box">
+  <div class="row wow fadeInUp" style="text-align: center">
     @yield('content')
   </div>
-
+  
   <!--==========================
   Pie de página
 ============================-->

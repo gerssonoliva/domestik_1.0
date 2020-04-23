@@ -12,13 +12,9 @@ use App\Cuenta_bancaria;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*SECCIÓN DEL SISTEMA ADMINISTRATIVO*/
 Route::get('/admin', function(){
     return view('layout.content');
-});
-
-Route::get('/web', function(){
-    return view('websites.index');
 });
 
 Route::resource('bancos', 'BancoController');
@@ -38,8 +34,17 @@ Route::resource('clientes', 'ClienteController');
 
 Route::resource('users', 'UserController');
 
+/*SECCIÓN DEL SITIO WEB*/
+Route::get('/web', function(){
+    return view('websites.index');
+});
+
 Route::get('registro', function(){
     return view('clientes.create');
+});
+
+Route::get('/suscripcion', function(){
+    return view('websites.suscripcion');
 });
 
 /*

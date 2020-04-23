@@ -60,20 +60,18 @@
                     </font>
                 </td>
                 <td tabindex="0" class="">
-                    <button type="button" class="btn btn-warning btn-xs" onclick="location.href='{{route('tipo_empleados.edit', $tipo_empleado->id)}}'">
+                    <button type="button" class="btn btn-info btn-sm" onclick="location.href='{{route('tipo_empleados.edit', $tipo_empleado->id)}}'">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <font style="vertical-align: inherit;">Editar</font>
+                            <i class="fas fa-pencil-alt"></i>
                         </font>
                     </button>
                 </td>
                 <!--Button con tipo submit-->
                 <td tabindex="0" class="">
                 {!! Form::open(['method'=>'DELETE', 'action' => ['Tipo_empleadoController@destroy', $tipo_empleado->id]]) !!}
-                    <button type="submit" class="btn btn-danger btn-xs">
+                    <button type="submit" class="btn btn-danger btn-sm">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-x"></i>
-                            <font style="vertical-align: inherit;">Eliminar</font>
+                            <i class="fas fa-trash"></i>
                         </font>
                     </button>
                 {!! Form::close() !!}

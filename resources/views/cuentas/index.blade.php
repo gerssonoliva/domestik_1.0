@@ -70,19 +70,17 @@
                     </font>
                 </td>
                 <td tabindex="0" class="">
-                    <button type="button" class="btn btn-warning btn-xs" onclick="location.href='{{route('cuentas.edit', $cuenta->id)}}'">
+                    <button type="button" class="btn btn-info btn-sm" onclick="location.href='{{route('cuentas.edit', $cuenta->id)}}'">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <font style="vertical-align: inherit;">Editar</font>
+                            <i class="fas fa-pencil-alt"></i>
                         </font>
                     </button>
                 </td>
                 <td tabindex="0" class="">
                 {!! Form::open(['method'=>'DELETE', 'action' => ['Cuenta_bancariaController@destroy', $cuenta->id]]) !!}
-                    <button type="submit" class="btn btn-danger btn-xs">
+                    <button type="submit" class="btn btn-danger btn-sm">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-x"></i>
-                            <font style="vertical-align: inherit;">Eliminar</font>
+                            <i class="fas fa-trash"></i>
                         </font>
                     </button>
                 {!!Form::close()!!}

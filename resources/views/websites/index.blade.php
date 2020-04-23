@@ -80,6 +80,7 @@
           <li class="menu-active"><a href="#hero">Inicio</a></li>
           <li><a href="#about">Acerca de nosotros</a></li>
           <li><a href="#services">Servicios</a></li>
+          <li><a href="#subscribe">Suscripción</a></li>
           <li><a href="#portfolio">Galería</a></li>
           <li><a href="#team">Equipo Domestik</a></li>
           <li><a href="#contact">Contáctanos</a></li>
@@ -102,10 +103,10 @@
                       </form>
                     @endguest
                   </a>
-              </div>
-          </div></li>
-        </ul>
-      </nav>
+                </div>
+              </div></li>
+          </ul>
+        </nav>
       <!-- #Contenedor del menú de navegación -->
     </div>
   </header>
@@ -201,13 +202,32 @@
   ============================-->
   <section id="subscribe">
     <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-8">
+      <div class="row" style="text-align: center">
+        <div class="col-md-12">
           <h3 class="subscribe-title">Suscríbete a Cliente Premiun</h3>
           <p class="subscribe-text">Súmate a nuestros miles de clientes premiun disfrutando de las mejores ofertas y beneficios exclusivos.</p>
         </div>
-        <div class="col-md-4 subscribe-btn-container">
-          <a class="subscribe-btn" href="#">Suscribirme</a>
+        <div class="col-md-12 service-item"></div>
+
+        <div class="col-md-4 service-item">
+          <h4 class="subscribe-title">Cliente Plata</h4>
+          <h4 class="subscribe-title">S/.59.99</h4>
+          <p class="subscribe-text">Desde barrido y trapeado de pisos, hasta encerado, y pulido de utensilios de cuidado.</p>
+          <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
+        </div>
+
+        <div class="col-md-4 service-item">
+          <h4 class="subscribe-title">Cliente Oro</h4>
+          <h4 class="subscribe-title">S/.79.99</h4>
+          <p class="subscribe-text">Preparación de confianza, la misma que inspira comer del hogar, incluyendo el servicio de limpieza de la cocina.</p>
+          <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
+        </div>
+
+        <div class="col-md-4 service-item">
+          <h4 class="subscribe-title">Cliente Platinio</h4>
+          <h4 class="subscribe-title">S/.99.99</h4>
+          <p class="subscribe-text">Atención al estilo de nuestros clientes, para siempre brindarte lo que necesites.</p>
+          <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
         </div>
       </div>
     </div>
@@ -303,53 +323,7 @@
     </div>
   </section>
 
-  <!--==========================
-  Sección comentarios
-  ============================-->
-  <!--
-  <section id="testimonials">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">Comentarios</h3>
-          <div class="section-title-divider"></div>
-          <p class="section-description">Algunos de nuestros clientes comparten su experiencia con nuestros servicios.</p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="profile">
-            <div class="pic"><img src="{{asset('webSite/img/client-1.jpg')}}" alt=""></div>
-            <h4>Saul Goodman</h4>
-            <span>Lawless Inc</span>
-          </div>
-        </div>
-        <div class="col-md-9">
-          <div class="quote">
-            <b><img src="{{asset('webSite/img/quote_sign_left.png')}}" alt=""></b> Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper. <small><img src="{{asset('webSite/img/quote_sign_right.png')}}" alt=""></small>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-9">
-          <div class="quote">
-            <b><img src="{{asset('webSite/img/quote_sign_left.png')}}" alt=""></b> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis architecto beatae. <small><img src="{{asset('webSite/img/quote_sign_right.png')}}" alt=""></small>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="profile">
-            <div class="pic"><img src="{{asset('webSite/img/client-2.jpg')}}" alt=""></div>
-            <h4>Sara Wilsson</h4>
-            <span>Odeo Inc</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
--->
+ 
   <!--==========================
   Sección equipo domestik
   ============================-->

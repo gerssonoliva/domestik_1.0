@@ -59,7 +59,7 @@
                         <font style="vertical-align: inherit;">Titular</font>
                     </font>
                 </th>
-                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="2">
+                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="3">
                     <font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">Operaciones</font>
                     </font>
@@ -100,19 +100,24 @@
                     </font>
                 </td>
                 <td tabindex="0" class="">
-                    <button type="button" class="btn btn-warning btn-xs" onclick="location.href='{{route('proveedores.edit', $proveedor->id)}}'">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{route('empleados.edit', $empleado->id)}}'">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <font style="vertical-align: inherit;">Editar</font>
+                            <i class="fas fa-eye"></i>
+                        </font>
+                    </button>
+                </td>
+                <td tabindex="0" class="">
+                    <button type="button" class="btn btn-info btn-sm" onclick="location.href='{{route('proveedores.edit', $proveedor->id)}}'">
+                        <font style="vertical-align: inherit;">
+                            <i class="fas fa-pencil-alt"></i>
                         </font>
                     </button>
                 </td>
                 <td tabindex="0" class="">
                 {!! Form::open(['method'=>'DELETE', 'action' => ['ProveedorController@destroy', $proveedor->id]]) !!}
-                    <button type="submit" class="btn btn-danger btn-xs">
+                    <button type="submit" class="btn btn-danger btn-sm">
                         <font style="vertical-align: inherit;">
-                            <i class="nav-icon fas fa-x"></i>
-                            <font style="vertical-align: inherit;">Eliminar</font>
+                            <i class="fas fa-trash"></i>
                         </font>
                     </button>
                 {!!Form::close()!!}
