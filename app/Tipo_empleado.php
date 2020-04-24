@@ -17,4 +17,9 @@ class Tipo_empleado extends Model
     {
         return $this->hasMany('App\Empleado');
     }
+
+    public function User()
+    {
+        return $this->hasOne('App\User');
+    }
 }

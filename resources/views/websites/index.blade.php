@@ -210,23 +210,41 @@
         <div class="col-md-12 service-item"></div>
 
         <div class="col-md-4 service-item">
-          <h4 class="subscribe-title">Cliente Plata</h4>
+          <h4 class="subscribe-subtitle">Cliente Plata</h4>
           <h4 class="subscribe-title">S/.59.99</h4>
-          <p class="subscribe-text">Desde barrido y trapeado de pisos, hasta encerado, y pulido de utensilios de cuidado.</p>
+          <ul>
+            <li><p class="subscribe-text">Entre 1 o 2 días a la semana.</p></li>
+            <li><p class="subscribe-text">Limpieza del hogar</p></li>
+            <li><p class="subscribe-text-negative">Cocina</p></li>
+            <li><p class="subscribe-text-negative">Lavandería</p></p></li>
+            <li><p class="subscribe-text-negative">Paseo de mascotas</p></li>
+          </ul>
           <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
         </div>
 
         <div class="col-md-4 service-item">
-          <h4 class="subscribe-title">Cliente Oro</h4>
+          <h4 class="subscribe-subtitle">Cliente Oro</h4>
           <h4 class="subscribe-title">S/.79.99</h4>
-          <p class="subscribe-text">Preparación de confianza, la misma que inspira comer del hogar, incluyendo el servicio de limpieza de la cocina.</p>
+          <ul>
+            <li><p class="subscribe-text">Entre 1 o 2 días a la semana.</li>
+            <li><p class="subscribe-text">Limpieza del hogar</p></li>
+            <li><p class="subscribe-text">Cocina</p></li>
+            <li><p class="subscribe-text-negative">Lavandería</p></li>
+            <li><p class="subscribe-text-negative">Paseo de mascotas</p></li>
+          </ul>
           <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
         </div>
 
         <div class="col-md-4 service-item">
-          <h4 class="subscribe-title">Cliente Platinio</h4>
+          <h4 class="subscribe-subtitle">Cliente Platinio</h4>
           <h4 class="subscribe-title">S/.99.99</h4>
-          <p class="subscribe-text">Atención al estilo de nuestros clientes, para siempre brindarte lo que necesites.</p>
+          <ul>
+            <li><p class="subscribe-text">Entre 2 a 3 días a la semana.</p></li>
+            <li><p class="subscribe-text">Limpieza del hogar</p></li>
+            <li><p class="subscribe-text">Cocina</p></li>
+            <li><p class="subscribe-text">Lavandería</p></li>
+            <li><p class="subscribe-text">Paseo de mascotas</p></li>
+          </ul>
           <a class="subscribe-btn" href="suscripcion">Suscribirme</a>
         </div>
       </div>

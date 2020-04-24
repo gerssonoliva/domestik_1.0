@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Tipo_empleadoMiddleware
+class esAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,6 @@ class Tipo_empleadoMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return redirect("/inicio");
-        //return $next($request);
+        return $next($request);
     }
 }

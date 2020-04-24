@@ -22,9 +22,9 @@ class CreateClientesTable extends Migration
             $table->date('fecha_nac');
             $table->string('correo');
             $table->unsignedBigInteger('logins_id');
-            $table->foreign('logins_id')
+            /*$table->foreign('logins_id')
                     ->references('id')->on('logins')
-                    ->onDelete('cascade');
+                    ->onDelete('cascade'); CAMBIADO POR TABLA USER*/
             $table->timestamps();
         });
     }

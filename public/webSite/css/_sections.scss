@@ -115,14 +115,26 @@
   padding:  80px 0;
   
   .subscribe-title {
-    text-align: center;
     color: #fff;
     font-size: 28px;
     font-weight: 700;
   }
-  
+  /*AGREGADO POR GERSON*/
+  .subscribe-subtitle {
+    text-decoration: underline;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 680;
+  }
+
+  .subscribe-text-negative {
+    text-decoration: line-through;
+    font-style: oblique;
+    color: #fff;
+  }
+  /**/
+
   .subscribe-text {
-    text-align: center;
     color: #fff;
   }
   

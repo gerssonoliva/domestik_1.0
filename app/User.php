@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'tipo_empleados_id'
     ];
 
     /**
@@ -45,5 +46,29 @@ class User extends Authenticatable
     public function Cliente()
     {
         return $this->hasOne('App\Cliente');
+    }
+
+    /*ROLES*/
+    public function Tipo_empleado()
+    {
+        return $this->belongsTo('App\Tipo_empleado');
+    }
+
+    public function esAdmin(){
+        $user = Auth::user();
+        if($user->tipo_empleados_id == 2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function esCliente(){
+        $user = Auth::user();
+        if($user->tipo_empleados_id == 6){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

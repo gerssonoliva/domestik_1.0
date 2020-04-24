@@ -61,7 +61,7 @@
                 </th>
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Contraseña</font>
+                        <font style="vertical-align: inherit;">Cuenta Domestik</font>
                     </font>
                 </th>
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Motor de renderizado: actívelo para ordenar la columna descendente">
@@ -106,12 +106,12 @@
                 </td>
                 <td tabindex="0" class="">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{$cliente->usuario}}</font>
+                        <font style="vertical-align: inherit;">{{$cliente->name}}</font>
                     </font>
                 </td>
                 <td tabindex="0" class="">
                     <font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">{{$cliente->contra}}</font>
+                        <font style="vertical-align: inherit;">{{$cliente->email}}</font>
                     </font>
                 </td>
                 <td tabindex="0" class="">

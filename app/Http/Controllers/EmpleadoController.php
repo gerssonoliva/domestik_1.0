@@ -50,7 +50,8 @@ class EmpleadoController extends Controller
         $users = new User;
         $users->email = $request['email']; 
         $users->password = Hash::make($request['password']); 
-        $users->name = $request['name']; 
+        $users->name = $request['e_nombre']; 
+        $users->tipo_empleados_id = $request['tipo_empleados_id'];
         $users->save();
         //-----------------------------------
         $empleados = new Empleado;

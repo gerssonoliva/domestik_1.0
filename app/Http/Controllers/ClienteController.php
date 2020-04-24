@@ -48,6 +48,7 @@ class ClienteController extends Controller
         $users->email = $request['email']; 
         $users->password = Hash::make($request['password']); 
         $users->name = $request['nombre']; 
+        $users->tipo_empleados_id = 6; //Perfil Cliente
         $users->save();
         //-----------------------------------
         $clientes = new Cliente;

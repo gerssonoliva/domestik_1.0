@@ -2,6 +2,7 @@
 //uso de modelos
 use App\Banco;
 use App\Cuenta_bancaria;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +13,19 @@ use App\Cuenta_bancaria;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*SECCIÓN DEL SISTEMA ADMINISTRATIVO*/
-Route::get('/admin', function(){
-    return view('layout.content');
+/*CONTROL DE PERFILES*/
+Route::get('/inicio', function(){
+    //Verificar el perfil del usuario 
+    $user = Auth::user();
+    if($user->esAdmin()){
+        return view('home');
+    }else if($user->esCliente()){
+        return view('websites.index');
+    }
+
 });
 
+/*SECCIÓN DEL SISTEMA ADMINISTRATIVO*/
 Route::resource('bancos', 'BancoController');
 
 Route::resource('cuentas', 'Cuenta_bancariaController');
@@ -46,14 +55,8 @@ Route::get('registro', function(){
 Route::get('/suscripcion', function(){
     return view('websites.suscripcion');
 });
-
-/*
-Route::get('/crear, BancoController@create');
-Route::get('/insertar, BancoController@store');
-Route::get('/actualizar, BancoController@update');
-Route::get('/borrar, BancoController@destroy');
-*/
+/**/
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
