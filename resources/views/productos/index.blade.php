@@ -90,7 +90,7 @@
                     </font>
                 </td>
                 <td tabindex="0" class="">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{route('empleados.edit', $empleado->id)}}'">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{route('productos.edit', $producto->id)}}'">
                         <font style="vertical-align: inherit;">
                             <i class="fas fa-eye"></i>
                         </font>

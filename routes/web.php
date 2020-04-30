@@ -1,7 +1,5 @@
 <?php
 //uso de modelos
-use App\Banco;
-use App\Cuenta_bancaria;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +40,8 @@ Route::get('/domestik', 'EmpleadoController@getDomestik');
 Route::resource('clientes', 'ClienteController');
 
 Route::resource('users', 'UserController');
+
+Route::resource('servicios', 'ServicioController');
 
 /*SECCIÓN DEL SITIO WEB*/
 Route::get('/web', function(){

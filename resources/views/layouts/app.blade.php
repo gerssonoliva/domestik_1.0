@@ -243,7 +243,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="servicios" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Servicios</p>
                 </a>
@@ -412,6 +412,7 @@
     <!-- A la izquierda -->
     <strong>Copyright &copy; 2020 <a href="https://www.domestik.com.pe">Domestik S.A.C.</a></strong> Todos los derechos reservados.
   </footer>
+  
 </div>
 
 <!-- SCRIPTS REQUERIDOS-->
