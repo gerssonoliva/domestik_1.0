@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2020 a las 12:27:22
+-- Tiempo de generación: 08-05-2020 a las 23:14:11
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -41,10 +41,12 @@ CREATE TABLE `bancos` (
 --
 
 INSERT INTO `bancos` (`id`, `nombre`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'BCP', '2020-03-24 05:00:25', '2020-03-24 05:00:25', NULL),
-(2, 'Interbank', '2020-03-24 05:00:32', '2020-03-24 05:00:32', NULL),
-(3, 'BBVA Continetal', '2020-03-24 05:00:38', '2020-03-24 05:00:38', NULL),
-(4, 'Banco de la Nación', '2020-03-24 05:00:48', '2020-03-24 05:00:48', NULL);
+(1, 'BCP', '2020-04-13 02:49:51', '2020-04-13 02:49:51', NULL),
+(2, 'BBVA Continetal', '2020-04-13 02:50:03', '2020-04-13 02:50:03', NULL),
+(3, 'Interbank', '2020-04-13 02:50:09', '2020-04-13 02:50:09', NULL),
+(4, 'Banco de la Nación', '2020-04-13 02:50:22', '2020-04-13 02:50:22', NULL),
+(5, 'Banco Falabella', '2020-04-13 03:32:02', '2020-04-13 03:32:02', NULL),
+(6, 'afdsfds', '2020-04-22 20:41:52', '2020-04-22 20:42:17', '2020-04-22 20:42:17');
 
 -- --------------------------------------------------------
 
@@ -60,18 +62,19 @@ CREATE TABLE `clientes` (
   `telefono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha_nac` date NOT NULL,
   `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logins_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `estado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `users_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `direccion`, `telefono`, `fecha_nac`, `correo`, `logins_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Edinson', 'Oliva Remigio', 'Bolívar 2054', '987654321', '1991-11-19', 'edinsonoliva@gmail.com', 7, '2020-03-24 10:36:21', '2020-03-24 10:36:21', NULL);
+INSERT INTO `clientes` (`id`, `nombre`, `apellido`, `direccion`, `telefono`, `fecha_nac`, `correo`, `created_at`, `updated_at`, `deleted_at`, `estado`, `users_id`) VALUES
+(1, 'Gerson', 'Remigio', 'Bolívar 2054', '969281666', '2020-04-01', 'gerssonoliva@gmail.com', '2020-04-19 05:46:34', '2020-04-19 05:46:34', NULL, 'A', 26);
 
 -- --------------------------------------------------------
 
@@ -118,6 +121,7 @@ CREATE TABLE `clientes_servicios` (
 CREATE TABLE `cuenta_bancarias` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nro_cuenta` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cci` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bancos_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -128,11 +132,12 @@ CREATE TABLE `cuenta_bancarias` (
 -- Volcado de datos para la tabla `cuenta_bancarias`
 --
 
-INSERT INTO `cuenta_bancarias` (`id`, `nro_cuenta`, `bancos_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '41534853346097', 1, '2020-03-24 05:00:59', '2020-03-24 05:00:59', NULL),
-(2, '04055510623', 4, '2020-03-24 05:01:54', '2020-03-24 05:01:54', NULL),
-(3, '2003131966151', 2, '2020-03-24 05:02:25', '2020-03-24 05:02:25', NULL),
-(4, '001104420200104572', 3, '2020-03-24 05:03:31', '2020-03-24 05:03:31', NULL);
+INSERT INTO `cuenta_bancarias` (`id`, `nro_cuenta`, `cci`, `bancos_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '41534853346097', '00241513485334609780', 1, '2020-04-13 02:51:25', '2020-04-13 02:51:25', NULL),
+(2, '001104420200104572', '01144200020010457219', 2, '2020-04-13 02:56:14', '2020-04-13 02:56:14', NULL),
+(3, '2003131966151', '00320001313196615131', 3, '2020-04-13 03:31:49', '2020-04-13 03:31:49', NULL),
+(4, '04055510623', '01800000405551062302', 4, '2020-04-13 03:33:27', '2020-04-13 03:33:27', NULL),
+(5, '8050100688121', '05450180010068812123', 5, '2020-04-13 03:35:27', '2020-04-13 03:35:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,7 +154,8 @@ CREATE TABLE `empleados` (
   `fecha_nac` date NOT NULL,
   `correo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipo_empleados_id` bigint(20) UNSIGNED NOT NULL,
-  `logins_id` bigint(20) UNSIGNED NOT NULL,
+  `users_id` bigint(20) UNSIGNED NOT NULL,
+  `estado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -159,10 +165,11 @@ CREATE TABLE `empleados` (
 -- Volcado de datos para la tabla `empleados`
 --
 
-INSERT INTO `empleados` (`id`, `e_nombre`, `apellido`, `direccion`, `telefono`, `fecha_nac`, `correo`, `tipo_empleados_id`, `logins_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Gerson', 'Oliva Remigio', 'Bolívar 2054', '969281666', '1995-10-03', 'gerssonoliva@gmail.com', 2, 4, '2020-03-23 22:48:59', '2020-03-23 22:48:59', NULL),
-(2, 'Brayan', 'Oliva Remigio', 'Bolívar 2054, Lambayeque', '987654321', '1994-04-14', 'brayannoliva@gmail.com', 3, 5, '2020-03-23 22:52:33', '2020-03-23 22:52:33', NULL),
-(3, 'Milagros', 'Sánchez Muñoz', 'Demetrio Acosta 801', '987654321', '1992-10-19', 'milisanchez@gmail.com', 3, 6, '2020-03-24 05:47:30', '2020-03-24 05:47:30', NULL);
+INSERT INTO `empleados` (`id`, `e_nombre`, `apellido`, `direccion`, `telefono`, `fecha_nac`, `correo`, `tipo_empleados_id`, `users_id`, `estado`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 'Gerson', 'Oliva Remigio', 'Bolívar 2054', '969281666', '1995-10-03', 'gerssonoliva@gmail.com', 1, 23, 'A', '2020-04-13 04:51:37', '2020-04-13 04:51:37', NULL),
+(5, 'Milagros', 'Sánchez Muñoz', 'Demetrio 801', '987654321', '1992-10-18', 'milisanchez@gmail.com', 3, 24, 'A', '2020-04-13 04:53:43', '2020-04-13 04:53:43', NULL),
+(6, 'Brayan', 'Oliva Remigio', 'Bolívar 2054', '987654321', '1994-06-14', 'brayanoliva@gmail.com', 4, 25, 'A', '2020-04-13 04:54:47', '2020-04-13 04:54:47', NULL),
+(8, 'Luisa', 'Perez García', 'Balta 1054', '987654321', '1999-06-01', 'luisaperez@gmail.com', 5, 33, 'A', '2020-04-30 17:12:09', '2020-04-30 17:12:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -182,37 +189,6 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `logins`
---
-
-CREATE TABLE `logins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `usuario` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `contra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `estado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `logins`
---
-
-INSERT INTO `logins` (`id`, `usuario`, `contra`, `foto`, `estado`, `descripcion`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin', '123456', NULL, 'A', NULL, '2020-03-23 02:12:40', '2020-03-23 02:12:40', NULL),
-(2, 'gerson', '123456', NULL, 'A', NULL, '2020-03-23 22:44:03', '2020-03-23 22:44:03', NULL),
-(3, 'gerson', '123456', NULL, 'A', NULL, '2020-03-23 22:45:23', '2020-03-23 22:45:23', NULL),
-(4, 'gerson', '123456', NULL, 'A', NULL, '2020-03-23 22:48:59', '2020-03-23 22:48:59', NULL),
-(5, 'brayan', '123456', NULL, 'A', NULL, '2020-03-23 22:52:33', '2020-03-23 22:52:33', NULL),
-(6, 'mili', '123456', NULL, 'A', NULL, '2020-03-24 05:47:30', '2020-03-24 05:47:30', NULL),
-(7, 'edinson', '123456', NULL, 'A', NULL, '2020-03-24 10:36:21', '2020-03-24 10:36:21', NULL);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `migrations`
 --
 
@@ -227,36 +203,36 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(13, '2020_03_21_040257_add_deleted_at_column_to_tipo_empleados_tables', 2),
-(23, '2020_03_21_053053_create_pago_servicios_table', 8),
-(24, '2020_03_21_053114_add_deleted_at_column_to_pago_servicios_tables', 8),
-(166, '2014_10_12_000000_create_users_table', 9),
-(167, '2014_10_12_100000_create_password_resets_table', 9),
-(168, '2019_08_19_000000_create_failed_jobs_table', 9),
-(169, '2020_03_11_182117_create_bancos_table', 9),
-(170, '2020_03_12_212644_create_cuentas_bancarias_table', 9),
-(171, '2020_03_13_213137_add_deleted_at_column_to_banco_tables', 9),
-(172, '2020_03_13_213220_add_deleted_at_column_to_cuenta_bancaria_tables', 9),
-(173, '2020_03_21_025528_create_proveedores_table', 9),
-(174, '2020_03_21_032304_add_deleted_at_column_to_proveedores_tables', 9),
-(175, '2020_03_21_032534_create_productos_table', 9),
-(176, '2020_03_21_032906_add_deleted_at_column_to_productos_tables', 9),
-(177, '2020_03_21_035856_create_tipo_empleados_table', 9),
-(178, '2020_03_21_040621_create_logins_table', 9),
-(179, '2020_03_21_041520_add_deleted_at_column_to_logins_tables', 9),
-(180, '2020_03_21_043528_create_empleados_table', 9),
-(181, '2020_03_21_050323_add_deleted_at_column_to_empleados_tables', 9),
-(182, '2020_03_21_051826_add_deleted_at_column_to_tipo_empleados_tables', 9),
-(183, '2020_03_21_051931_create_clientes_table', 9),
-(184, '2020_03_21_051948_add_deleted_at_column_to_clientes_tables', 9),
-(185, '2020_03_21_052220_create_pagos_table', 9),
-(186, '2020_03_21_052236_add_deleted_at_column_to_pagos_tables', 9),
-(187, '2020_03_21_053053_create_clientes_pagos_table', 9),
-(188, '2020_03_21_053114_add_deleted_at_column_to_clientes_pagos_tables', 9),
-(189, '2020_03_21_053711_create_servicios_table', 9),
-(190, '2020_03_21_053725_add_deleted_at_column_to_servicios_tables', 9),
-(191, '2020_03_21_054005_create_clientes_servicios_table', 9),
-(192, '2020_03_21_054023_add_deleted_at_column_to_clientes_servicios_tables', 9);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2020_03_11_182117_create_bancos_table', 1),
+(5, '2020_03_12_212644_create_cuentas_bancarias_table', 1),
+(6, '2020_03_13_213137_add_deleted_at_column_to_banco_tables', 1),
+(7, '2020_03_13_213220_add_deleted_at_column_to_cuenta_bancaria_tables', 1),
+(8, '2020_03_21_025528_create_proveedores_table', 1),
+(9, '2020_03_21_032304_add_deleted_at_column_to_proveedores_tables', 1),
+(10, '2020_03_21_032534_create_productos_table', 1),
+(11, '2020_03_21_032906_add_deleted_at_column_to_productos_tables', 1),
+(12, '2020_03_21_035856_create_tipo_empleados_table', 1),
+(13, '2020_03_21_040621_create_logins_table', 1),
+(14, '2020_03_21_041520_add_deleted_at_column_to_logins_tables', 1),
+(15, '2020_03_21_043528_create_empleados_table', 1),
+(16, '2020_03_21_050323_add_deleted_at_column_to_empleados_tables', 1),
+(17, '2020_03_21_051826_add_deleted_at_column_to_tipo_empleados_tables', 1),
+(18, '2020_03_21_051931_create_clientes_table', 1),
+(19, '2020_03_21_051948_add_deleted_at_column_to_clientes_tables', 1),
+(20, '2020_03_21_052220_create_pagos_table', 1),
+(21, '2020_03_21_052236_add_deleted_at_column_to_pagos_tables', 1),
+(22, '2020_03_21_053053_create_clientes_pagos_table', 1),
+(23, '2020_03_21_053114_add_deleted_at_column_to_clientes_pagos_tables', 1),
+(24, '2020_03_21_053711_create_servicios_table', 1),
+(25, '2020_03_21_053725_add_deleted_at_column_to_servicios_tables', 1),
+(26, '2020_03_21_054005_create_clientes_servicios_table', 1),
+(27, '2020_03_21_054023_add_deleted_at_column_to_clientes_servicios_tables', 1),
+(28, '2020_04_12_182434_add_users_id_at_column_to_clientes_tables', 2),
+(29, '2020_04_12_182512_add_users_id_at_column_to_empleados_tables', 2),
+(30, '2020_04_12_215713_add_cci_at_column_to_cuenta_bancarias_tables', 3);
 
 -- --------------------------------------------------------
 
@@ -308,7 +284,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `p_nombre`, `fecha_ing`, `costo`, `stock`, `proveedores_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Ariel 25kg', '2020-03-24', '25.00', 234, 2, '2020-03-24 05:09:15', '2020-03-24 05:09:15', NULL);
+(1, 'Ariel 25kg', '2020-04-30', '50.00', 100, 1, '2020-04-30 17:20:04', '2020-04-30 17:20:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -334,8 +310,9 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`id`, `nombre`, `ruc`, `direccion`, `telefono`, `correo`, `titular`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Ilusionistas SAC', '10733905285', 'Bolívar 2054', '969281666', 'gerssonoliva@gmail.com', 'Gerson Oliva Remigio', '2020-03-24 05:06:45', '2020-03-24 05:06:45', NULL),
-(2, 'P&G', '20733385285', 'Bolívar 2054, Lambayeque', '987654321', 'p&g@gmail.com', 'Milagros Sánchez Muñoz', '2020-03-24 05:07:43', '2020-03-24 05:07:43', NULL);
+(1, 'Ilusionistas SAC', '10733905285', 'Bolívar 2054', '969281666', 'ilusionistas@gmail.com', 'Gerson Oliva Remigio', '2020-04-30 17:16:49', '2020-04-30 17:16:49', NULL),
+(2, 'Ilusionistas SAC', '10733905285', 'Bolívar 2054', '969281666', 'ilusionistas@gmail.com', 'Edinson Oliva Remigio', '2020-04-30 17:17:15', '2020-04-30 17:19:31', '2020-04-30 17:19:31'),
+(3, 'Ilusionistas SAC', '10733905285', 'Bolívar 2054', '969281666', 'ilusionistas@gmail.com', 'Edinson Oliva Remigio', '2020-04-30 17:18:06', '2020-04-30 17:19:35', '2020-04-30 17:19:35');
 
 -- --------------------------------------------------------
 
@@ -351,6 +328,15 @@ CREATE TABLE `servicios` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`id`, `nombre`, `costo`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Limpieza de hogar', '49.99', '2020-04-30 22:23:27', '2020-04-30 22:23:27', NULL),
+(2, 'Lavandería', '39.99', '2020-04-30 22:24:34', '2020-04-30 22:24:34', NULL),
+(3, 'Cocina', '39.99', '2020-04-30 22:26:37', '2020-04-30 22:26:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -372,9 +358,12 @@ CREATE TABLE `tipo_empleados` (
 --
 
 INSERT INTO `tipo_empleados` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Administrador', NULL, '2020-03-23 08:07:30', '2020-03-23 08:07:30', NULL),
-(2, 'Contador', NULL, '2020-03-23 08:19:15', '2020-03-23 08:19:15', NULL),
-(3, 'Domestik', NULL, '2020-03-23 08:19:40', '2020-03-23 08:19:40', NULL);
+(1, 'Gerente', NULL, '2020-04-13 03:59:24', '2020-04-13 03:59:24', NULL),
+(2, 'Administrador', NULL, '2020-04-13 03:59:39', '2020-04-13 03:59:39', NULL),
+(3, 'Contador', NULL, '2020-04-13 03:59:47', '2020-04-13 03:59:47', NULL),
+(4, 'Asesor Legal', NULL, '2020-04-13 03:59:56', '2020-04-13 03:59:56', NULL),
+(5, 'Domestik', NULL, '2020-04-13 04:00:08', '2020-04-13 04:00:08', NULL),
+(6, 'Cliente', NULL, '2020-04-23 23:30:58', '2020-04-23 23:30:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -388,6 +377,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_empleados_id` bigint(20) UNSIGNED DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -397,8 +387,13 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Gerson', 'admin@domestik.com', NULL, '$2y$10$XB.ZHkWYAhk8lVsBi2ZDle.7usRiAGlFAklCyICqzX6mbEsX8ZCuW', 'xzjgiQz2U2Vf79ZaQWSw6NDwwGng0P0Kn91Ti4jG1g2WKsp1M1TM9T0hE8L5', '2020-03-25 10:38:37', '2020-03-25 10:38:37');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_empleados_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'admin@domestik.com', NULL, '$2y$10$4DSvAxXMHW87T6kkL7uF8OZPL6lscfCuplz5YHa/PTd0dPFfu.bo2', 2, NULL, '2020-04-13 02:43:27', '2020-04-13 02:43:27'),
+(23, 'Gerson_O', 'gerson@domestik.com', NULL, '$2y$10$KGmnn3MsA7ZHf0Wlp1Cg8.7jV44GF7Aad5I8a9w2yOBwjVKRRW/Ry', 1, NULL, '2020-04-13 04:51:37', '2020-04-13 04:51:37'),
+(24, 'Milagros_S', 'mili@domestik.com', NULL, '$2y$10$PrueiG/UBRbeY2QDP5zYPeQQFYq7aoharMsc.AtDI5aJxVQT51tK6', 3, NULL, '2020-04-13 04:53:43', '2020-04-13 04:53:43'),
+(25, 'Bayan_O', 'brayan@domestik.com', NULL, '$2y$10$yHhNUKf6zB8Yd36X5RUKJ.ztJOv3DYqq6zABIVflTvU.dnLwF/LJ.', 4, NULL, '2020-04-13 04:54:47', '2020-04-13 04:54:47'),
+(26, 'Gerson', 'gerssonoliva@domestik.com', NULL, '$2y$10$HbGUNEQnvkjkEXYydIrEXe5ztd2Zmjd4o1y/5gooLfnUP2bIFbky6', 6, NULL, '2020-04-19 05:46:33', '2020-04-19 05:46:33'),
+(33, 'Luisa', 'luisa@domestik.com', NULL, '$2y$10$t4vCWJw04jSx1ZJm.M2JTuZ41mV55VzXkVbJxc6Bv6xd4WaBdTkii', 5, NULL, '2020-04-30 17:12:09', '2020-04-30 17:12:09');
 
 --
 -- Índices para tablas volcadas
@@ -415,7 +410,7 @@ ALTER TABLE `bancos`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `clientes_logins_id_foreign` (`logins_id`);
+  ADD KEY `clientes_users_id_foreign` (`users_id`);
 
 --
 -- Indices de la tabla `clientes_pagos`
@@ -447,18 +442,12 @@ ALTER TABLE `cuenta_bancarias`
 ALTER TABLE `empleados`
   ADD PRIMARY KEY (`id`),
   ADD KEY `empleados_tipo_empleados_id_foreign` (`tipo_empleados_id`),
-  ADD KEY `empleados_logins_id_foreign` (`logins_id`);
+  ADD KEY `empleados_users_id_foreign` (`users_id`);
 
 --
 -- Indices de la tabla `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `logins`
---
-ALTER TABLE `logins`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -519,13 +508,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `bancos`
 --
 ALTER TABLE `bancos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_pagos`
@@ -543,13 +532,13 @@ ALTER TABLE `clientes_servicios`
 -- AUTO_INCREMENT de la tabla `cuenta_bancarias`
 --
 ALTER TABLE `cuenta_bancarias`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -558,16 +547,10 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `logins`
---
-ALTER TABLE `logins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
@@ -585,25 +568,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_empleados`
 --
 ALTER TABLE `tipo_empleados`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
@@ -613,7 +596,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_logins_id_foreign` FOREIGN KEY (`logins_id`) REFERENCES `logins` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `clientes_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `clientes_pagos`
@@ -640,8 +623,8 @@ ALTER TABLE `cuenta_bancarias`
 -- Filtros para la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  ADD CONSTRAINT `empleados_logins_id_foreign` FOREIGN KEY (`logins_id`) REFERENCES `logins` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `empleados_tipo_empleados_id_foreign` FOREIGN KEY (`tipo_empleados_id`) REFERENCES `tipo_empleados` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `empleados_tipo_empleados_id_foreign` FOREIGN KEY (`tipo_empleados_id`) REFERENCES `tipo_empleados` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `empleados_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `productos`
