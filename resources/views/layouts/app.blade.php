@@ -41,11 +41,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin" class="nav-link">Inicio</a>
+        <a href="inicio" class="nav-link">Inicio</a>
       </li>
     </ul>
 
-    <!-- Búsquedas -->
+    <!-- Búsquedas 
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
@@ -56,7 +56,7 @@
         </div>
       </div>
     </form>
-
+    -->
     <!-- Navbar - Links a la derecha -->
     <ul class="navbar-nav ml-auto">
       <!-- Menú de mensajes -->
